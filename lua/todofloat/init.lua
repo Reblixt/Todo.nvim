@@ -8,8 +8,8 @@ local function expand_path(path)
 end
 
 local function win_config()
-	local width = math.floor(vim.o.columns * 0.8)
-	local height = math.floor(vim.o.lines * 0.8)
+	local width = math.floor(vim.o.columns * 0.85)
+	local height = math.floor(vim.o.lines * 0.85)
 
 	return {
 		relative = "editor",
