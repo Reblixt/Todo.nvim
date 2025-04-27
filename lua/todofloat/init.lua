@@ -38,6 +38,18 @@ local function open_floating_file(target_file)
 	vim.bo[buf].swapfile = false
 
 	local win = vim.api.nvim_open_win(buf, true, win_config())
+
+	vim.api.nvim_buf_set_keymap(buf, "n", "q", "", {
+		noremap = true,
+		silent = true,
+		callback = function()
+			if vim.api.nvim_get_option_value("modified", { buf = buf }) then
+				vim.notify("save your changes please", vim.log.levels.WARN)
+			else
+				vim.api.nvim_win_close(0, true)
+			end
+		end,
+	})
 end
 
 local function setup_user_comands(opts)
